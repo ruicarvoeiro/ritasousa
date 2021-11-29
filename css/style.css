@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6, figure {
   font-family: "Sacramento", Arial, serif;
 }
 .fh5co-nav a {
-  padding: 100px 10px;
+  padding: 5px 10px;
   color: #F1EFDB;
 }
 @media screen and (max-width: 768px) {
