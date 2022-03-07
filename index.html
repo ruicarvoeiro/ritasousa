@@ -18,6 +18,7 @@
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
+	
 
 	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet'
 		type='text/css'>
@@ -95,7 +96,6 @@
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 						<h2>Olá!</h2>
 						<h3>Lisboa, 15 de Outubro de 2022</h3>
-						<p><bold>Novas informações neste site a partir de 1 de Abril de 2022</bold></p>
 					</div>
 				</div>
 				<div class="couple-wrap animate-box">
@@ -255,34 +255,29 @@
 		</div>
 	
 		<!--Attending-->
-		<div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/img_bg_4.jpg);">
+		<div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/img_bg_2.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row animate-box">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 						<h2>Vais comparecer?</h2>
-						<p>Por favor, preenche os campos incluindo as todas as pessoas do mesmo grupo</p>
+						<p>Por favor, indica o número de pessoas, incluindo crianças.</p>
 					</div>
 				</div>
 				<div class="row animate-box">
-					<div class="col-md-10 col-md-offset-1">
-						<form class="form-inline">
-							<div class="col-md-4 col-sm-4">
-								<div class="form-group">
-									<label for="name" class="sr-only">Nome</label>
-									<input type="name" class="form-control" id="name" placeholder="Name">
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<div class="form-group">
-									<label for="phone" class="sr-only">Telémovel</label>
-									<input type="phone" class="form-control" id="phone" placeholder="Telémovel">
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<button type="submit" class="btn btn-default btn-block">Vou comparecer!</button>
-							</div>
-						</form>
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<select name="howMany" id="howMany">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="4">5</option>
+							<option value="4">6</option>
+					  	</select>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<input type="button" value="Send Email" onclick="sendEmail()">
 					</div>
 				</div>
 			</div>
@@ -333,7 +328,7 @@
 	<script src="js/simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
 	<script>
 		var d = new Date(new Date().getTime() + 200 * 120 * 120 * 2000);
 
@@ -345,7 +340,46 @@
 			
 		});
 	</script>
+	  <script type="text/javascript">
+		function sendEmail() {
+		  Email.send({
+			Host: "smtp.mailtrap.io",
+			Username: "8cf8af97fbe6f4",
+			Password: "e5e5c635daf740",
+			To: 'rui_carvoeiro@hotmail.com',
+			From: "nodosRs@gmail.com",
+			Subject: "Sending Email using javascript",
+			Body: "Well that was easy!!",
+		  })
+			.then(function (message) {
+			  alert("mail sent successfully")
+			});
+		}
+	  </script>
+	<script>
+		$('#howMany').on('change', function() {
+  			alert( this.value );
+				  // Append the new elements 
+		});
+	</script>
+	<script>
+		$("#quantity").on("input", function() {
+				var newInput = "<input type=\"name\" class=\"form-control\" id=\"name\" placeholder=\"Name\">";
+				$("body").append(newInput);
+			for (let index = 0; index < $(this).val(); index++) {
+				/*var newInput = "<input type=\"name\" class=\"form-control\" id=\"name\" placeholder=\"Name\">";
+				$("body").append(newInput);	*/	
 
+
+				/*var newInput = document.createElement("input");
+				newInput.type="name";
+				newInput.class="form-control";
+				newInput.id="id"+ $(this).val();
+				newInput.placeholder="Nome";
+				$("#quantity").append(newInput);*/				
+			}
+		});
+	</script>
 </body>
 
 </html>
