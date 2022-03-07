@@ -261,24 +261,69 @@
 				<div class="row animate-box">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 						<h2>Vais comparecer?</h2>
-						<p>Por favor, indica o número de pessoas, incluindo crianças.</p>
+						<p style="color:#F1EFDB">Por favor, indica um e-mail. Irás receber uma validação dos noivos após confirmar.</p>
+						<input type="email" class="form-control" id="mail" placeholder="example@email.com" onchange="validaProximo()">
 					</div>
 				</div>
 				<div class="row animate-box">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<select name="howMany" id="howMany">
+						<p style="color:#F1EFDB">Após válido e-mail, por favor, indica o número de pessoas a confirmar, incluindo crianças.</p>
+						<select disabled="true" name="howMany" id="howMany">
+							<option value="" selected disabled hidden>Escolhe</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
-							<option value="4">5</option>
-							<option value="4">6</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
 					  	</select>
 					</div>
-					<div>
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasUm" hidden>
+						<p style="color:#F1EFDB">Indica por favor o nome da pessoa</p>
+						<input type="name" class="form-control" id="nameUm1" placeholder="Nome">
 						<button type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
-						<input type="button" value="Send Email" onclick="sendEmail()">
 					</div>
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasDois" hidden>
+						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
+						<input type="name" class="form-control" id="nameDois1" placeholder="Nome">
+						<input type="name" class="form-control" id="nameDois2" placeholder="Nome">
+						<button type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+					</div>
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasTres" hidden>
+						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
+						<input type="name" class="form-control" id="nameTres1" placeholder="Nome">
+						<input type="name" class="form-control" id="nameTres2" placeholder="Nome">
+						<input type="name" class="form-control" id="nameTres3" placeholder="Nome">
+						<button type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+					</div>
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasQuatro" hidden>
+						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
+						<input type="name" class="form-control" id="nameQuatro1" placeholder="Nome">
+						<input type="name" class="form-control" id="nameQuatro2" placeholder="Nome">
+						<input type="name" class="form-control" id="nameQuatro3" placeholder="Nome">
+						<input type="name" class="form-control" id="nameQuatro4" placeholder="Nome">
+						<button type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+					</div>
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasCinco" hidden>
+						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
+						<input type="name" class="form-control" id="nameCinco1" placeholder="Nome">
+						<input type="name" class="form-control" id="nameCinco2" placeholder="Nome">
+						<input type="name" class="form-control" id="nameCinco3" placeholder="Nome">
+						<input type="name" class="form-control" id="nameCinco4" placeholder="Nome">
+						<input type="name" class="form-control" id="nameCinco5" placeholder="Nome">
+						<button type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+					</div>
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasSeis" hidden>
+						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
+						<input type="name" class="form-control" id="nameSeis1" placeholder="Nome">
+						<input type="name" class="form-control" id="nameSeis2" placeholder="Nome">
+						<input type="name" class="form-control" id="nameSeis3" placeholder="Nome">
+						<input type="name" class="form-control" id="nameSeis4" placeholder="Nome">
+						<input type="name" class="form-control" id="nameSeis5" placeholder="Nome">
+						<input type="name" class="form-control" id="nameSeis6" placeholder="Nome">
+						<button type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -348,20 +393,104 @@
 			Password: "e5e5c635daf740",
 			To: 'rui_carvoeiro@hotmail.com',
 			From: "nodosRs@gmail.com",
-			Subject: "Sending Email using javascript",
-			Body: "Well that was easy!!",
+			Subject: "ola ritinha",
+			Body: "es gordinha",
 		  })
 			.then(function (message) {
-			  alert("mail sent successfully")
+			  alert("Confirmação enviada");
 			});
 		}
 	  </script>
 	<script>
+		function validaProximo(){
+			var x = document.getElementById("mail");
+			if(x.length!==0  && validacaoEmail(x)){
+				$('#howMany').prop('disabled', false);
+			}
+			if(x.length ===0) $('#howMany').prop('disabled', true);
+
+
+		}
+		function validacaoEmail(field) {
+			usuario = field.value.substring(0, field.value.indexOf("@"));
+			dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+			if ((usuario.length >=1) &&
+				(dominio.length >=3) &&
+				(usuario.search("@")==-1) &&
+				(dominio.search("@")==-1) &&
+				(usuario.search(" ")==-1) &&
+				(dominio.search(" ")==-1) &&
+				(dominio.search(".")!=-1) &&
+				(dominio.indexOf(".") >=1)&&
+				(dominio.lastIndexOf(".") < dominio.length - 1)) {
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
 		$('#howMany').on('change', function() {
-  			alert( this.value );
-				  // Append the new elements 
+  			switch(this.value){
+				case "1":
+					document.getElementById('apareceNomeDasPessoasUm').removeAttribute("hidden");
+					document.getElementById('apareceNomeDasPessoasDois').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasTres').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasQuatro').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasCinco').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasSeis').setAttribute("hidden", "hidden");
+				break;
+				case "2":
+					document.getElementById('apareceNomeDasPessoasUm').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasDois').removeAttribute("hidden");
+					document.getElementById('apareceNomeDasPessoasTres').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasQuatro').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasCinco').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasSeis').setAttribute("hidden", "hidden");
+				break;
+				case "3":
+					document.getElementById('apareceNomeDasPessoasUm').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasDois').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasTres').removeAttribute("hidden");
+					document.getElementById('apareceNomeDasPessoasQuatro').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasCinco').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasSeis').setAttribute("hidden", "hidden");
+				break;
+				case "4":
+					document.getElementById('apareceNomeDasPessoasUm')
+					document.getElementById('apareceNomeDasPessoasDois').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasTres').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasQuatro').removeAttribute("hidden");
+					document.getElementById('apareceNomeDasPessoasCinco').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasSeis').setAttribute("hidden", "hidden");
+				break;
+				case "5":
+					document.getElementById('apareceNomeDasPessoasUm').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasDois').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasTres').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasQuatro').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasCinco').removeAttribute("hidden");
+					document.getElementById('apareceNomeDasPessoasSeis').setAttribute("hidden", "hidden");
+				break;
+				case "6":
+					document.getElementById('apareceNomeDasPessoasUm').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasDois').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasTres').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasQuatro').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasCinco').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasSeis').removeAttribute("hidden");
+				break;
+				default:
+					document.getElementById('apareceNomeDasPessoasUm').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasDois').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasTres').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasQuatro').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasCinco').setAttribute("hidden", "hidden");
+					document.getElementById('apareceNomeDasPessoasSeis').setAttribute("hidden", "hidden");
+				break;
+			};
 		});
 	</script>
+	
 	<script>
 		$("#quantity").on("input", function() {
 				var newInput = "<input type=\"name\" class=\"form-control\" id=\"name\" placeholder=\"Name\">";
