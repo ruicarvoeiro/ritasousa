@@ -274,20 +274,20 @@
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasUm" hidden>
 						<p style="color:#F1EFDB">Indica por favor o nome da pessoa</p>
 						<input type="name" class="form-control" id="nameUm1" placeholder="Nome"><br>
-						<button style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button  id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasDois" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
 						<input type="name" class="form-control" id="nameDois1" placeholder="Nome">
 						<input type="name" class="form-control" id="nameDois2" placeholder="Nome"> <br>
-						<button style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasTres" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
 						<input type="name" class="form-control" id="nameTres1" placeholder="Nome">
 						<input type="name" class="form-control" id="nameTres2" placeholder="Nome">
 						<input type="name" class="form-control" id="nameTres3" placeholder="Nome"><br>
-						<button style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasQuatro" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
@@ -295,7 +295,7 @@
 						<input type="name" class="form-control" id="nameQuatro2" placeholder="Nome">
 						<input type="name" class="form-control" id="nameQuatro3" placeholder="Nome">
 						<input type="name" class="form-control" id="nameQuatro4" placeholder="Nome"><br>
-						<button style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasCinco" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
@@ -304,7 +304,7 @@
 						<input type="name" class="form-control" id="nameCinco3" placeholder="Nome">
 						<input type="name" class="form-control" id="nameCinco4" placeholder="Nome">
 						<input type="name" class="form-control" id="nameCinco5" placeholder="Nome"><br>
-						<button style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasSeis" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
@@ -314,7 +314,7 @@
 						<input type="name" class="form-control" id="nameSeis4" placeholder="Nome">
 						<input type="name" class="form-control" id="nameSeis5" placeholder="Nome">
 						<input type="name" class="form-control" id="nameSeis6" placeholder="Nome"><br>
-						<button style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 
 				</div>
@@ -387,6 +387,8 @@
 	</script>
 	  <script type="text/javascript">
 		function sendEmail() {
+			document.getElementById('btnSubmit').disabled = true;
+			document.getElementById('btnSubmit').textContent  = "Aguarda um momento por favor";
 			var x = document.getElementById('howMany').value;
 			var body;
 			switch(x){
@@ -468,7 +470,14 @@
 			Body: body,
 		  })
 			.then(function (message) {
-			  alert("Confirmação enviada");
+			  //alert("Confirmação enviada");
+			  if(message == 'OK') alert("Enviado com sucesso!")
+			  else{
+				alert(message);
+			  	document.getElementById('btnSubmit').disabled = false;
+				document.getElementById('btnSubmit').textContent  = "Confirmar";
+			  }
+
 			});
 		}
 	  </script>
@@ -476,9 +485,9 @@
 		function validaProximo(){
 			var x = document.getElementById("mail");
 			if(x.length!==0  && validacaoEmail(x)){
-				$('#howMany').prop('disabled', false);
+				
 			}
-			if(x.length ===0) $('#howMany').prop('disabled', true);
+		$('#howMany').prop('disabled', false);	if(x.length ===0) $('#howMany').prop('disabled', true);
 
 
 		}
