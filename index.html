@@ -481,10 +481,19 @@
 			Body: body,
 		  })
 			.then(function (message) {
-			  if(message == 'OK'){
-				alert("Confirmação enviada com sucesso!");
-				var x = document.getElementById('howMany').value;
-				switch(this.value){
+			  if(message == 'OK'){			
+				alert("Confirmação enviada com sucesso!");			
+			  } 
+			  else{
+				contador +=1;
+				console.log("Tentativa " + contador);
+				if(contador == 6){
+					alert("Neste momento não consigo processar o pedido, por favor tenta mais tarde");
+				} 
+				else send(body);
+			  }
+			  var x = document.getElementById('howMany').value;
+				switch(x){
 				case "1":
 					document.getElementById('btnSubmit1').disabled = false;
 			    	document.getElementById('btnSubmit1').textContent  = "Confirmar";
@@ -510,15 +519,6 @@
 			    	document.getElementById('btnSubmit6').textContent  = "Confirmar";
 				break;
 			};
-			  } 
-			  else{
-				contador +=1;
-				console.log("Tentativa " + contador);
-				if(contador == 6){
-					alert("Neste momento não consigo processar o pedido, por favor tenta mais tarde");
-				} 
-				else send(body);
-			  }
 			});
 		}
 	  </script>
