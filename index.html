@@ -470,13 +470,14 @@
 			Body: body,
 		  })
 			.then(function (message) {
-			  //alert("Confirmação enviada");
-			  if(message == 'OK') alert("Enviado com sucesso!")
+			  if(message == 'OK'){
+				alert("Confirmação enviada com sucesso!")
+			  } 
 			  else{
-				alert(message);
-			  	document.getElementById('btnSubmit').disabled = false;
-				document.getElementById('btnSubmit').textContent  = "Confirmar";
+				alert("Por favor, tenta novamente, podes ter de tentar várias vezes ou até mais tarde. Culpa da biblioteca e não do programador :p");
 			  }
+			  document.getElementById('btnSubmit').disabled = false;
+			  document.getElementById('btnSubmit').textContent  = "Confirmar";
 
 			});
 		}
