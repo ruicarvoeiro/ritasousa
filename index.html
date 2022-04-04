@@ -274,20 +274,20 @@
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasUm" hidden>
 						<p style="color:#F1EFDB">Indica por favor o nome da pessoa</p>
 						<input type="name" class="form-control" id="nameUm1" placeholder="Nome"><br>
-						<button  id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button  id="btnSubmit1" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasDois" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
 						<input type="name" class="form-control" id="nameDois1" placeholder="Nome">
 						<input type="name" class="form-control" id="nameDois2" placeholder="Nome"> <br>
-						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit2" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasTres" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
 						<input type="name" class="form-control" id="nameTres1" placeholder="Nome">
 						<input type="name" class="form-control" id="nameTres2" placeholder="Nome">
 						<input type="name" class="form-control" id="nameTres3" placeholder="Nome"><br>
-						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit3" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasQuatro" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
@@ -295,7 +295,7 @@
 						<input type="name" class="form-control" id="nameQuatro2" placeholder="Nome">
 						<input type="name" class="form-control" id="nameQuatro3" placeholder="Nome">
 						<input type="name" class="form-control" id="nameQuatro4" placeholder="Nome"><br>
-						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit4" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasCinco" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
@@ -304,7 +304,7 @@
 						<input type="name" class="form-control" id="nameCinco3" placeholder="Nome">
 						<input type="name" class="form-control" id="nameCinco4" placeholder="Nome">
 						<input type="name" class="form-control" id="nameCinco5" placeholder="Nome"><br>
-						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit5" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" id="apareceNomeDasPessoasSeis" hidden>
 						<p style="color:#F1EFDB">Indica por favor os nomes das pessoas</p>
@@ -314,7 +314,7 @@
 						<input type="name" class="form-control" id="nameSeis4" placeholder="Nome">
 						<input type="name" class="form-control" id="nameSeis5" placeholder="Nome">
 						<input type="name" class="form-control" id="nameSeis6" placeholder="Nome"><br>
-						<button id="btnSubmit" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
+						<button id="btnSubmit6" style="background-color:#F1EFDB;color: #455C34;" type="submit" class="btn btn-default btn-block" onclick="sendEmail()">Confirmar</button>
 					</div>
 
 				</div>
@@ -387,8 +387,6 @@
 	</script>
 	  <script type="text/javascript">
 		function sendEmail() {
-			document.getElementById('btnSubmit').disabled = true;
-			document.getElementById('btnSubmit').textContent  = "Aguarda um momento por favor";
 			var x = document.getElementById('howMany').value;
 			var body;
 			switch(x){
@@ -398,6 +396,8 @@
 					alert("Por favor, preenche o nome");
 					break;
 				} 
+				document.getElementById('btnSubmit1').disabled = true;
+			    document.getElementById('btnSubmit1').textContent  = "Aguarda um momento";
 				send(name);
 				break;
 				case "2":
@@ -407,6 +407,8 @@
 					alert("Por favor, preenche ambos os nomes");
 					break;
 				} 
+				document.getElementById('btnSubmit2').disabled = true;
+			    document.getElementById('btnSubmit2').textContent  = "Aguarda um momento";
 				send(name + ';' + name2);
 				break;
 				case "3":
@@ -417,6 +419,8 @@
 					alert("Por favor, preenche ambos os nomes");
 					break;
 				} 
+				document.getElementById('btnSubmit3').disabled = true;
+			    document.getElementById('btnSubmit3').textContent  = "Aguarda um momento";
 				send(name + ';' + name2 + ';' + name3);
 				break;
 				case "4":
@@ -428,6 +432,8 @@
 					alert("Por favor, preenche ambos os nomes");
 					break;
 				} 
+				document.getElementById('btnSubmit4').disabled = true;
+			    document.getElementById('btnSubmit4').textContent  = "Aguarda um momento";
 				send(name + ';' + name2 + ';' + name3 + ';' + name4);
 				break;
 				case "5":
@@ -440,6 +446,8 @@
 					alert("Por favor, preenche ambos os nomes");
 					break;
 				} 
+				document.getElementById('btnSubmit5').disabled = true;
+			    document.getElementById('btnSubmit5').textContent  = "Aguarda um momento";
 				send(name + ';' + name2 + ';' + name3 + ';' + name4 + ';' + name5);
 				break;
 				case "6":
@@ -453,13 +461,16 @@
 					alert("Por favor, preenche ambos os nomes");
 					break;
 				} 
+				document.getElementById('btnSubmit6').disabled = true;
+			    document.getElementById('btnSubmit6').textContent  = "Aguarda um momento";
 				send(name + ';' + name2 + ';' + name3 + ';' + name4 + ';' + name5 + ';' + name6);
 				break;
 			};
 
 
 		}
-		function send(body){
+		var contador = 0;
+		function send(body){		
 			Email.send({
 			Host: "smtp.mailtrap.io",
 			Username: "e73009582f2d91",
@@ -471,14 +482,43 @@
 		  })
 			.then(function (message) {
 			  if(message == 'OK'){
-				alert("Confirmação enviada com sucesso!")
+				alert("Confirmação enviada com sucesso!");
+				var x = document.getElementById('howMany').value;
+				switch(this.value){
+				case "1":
+					document.getElementById('btnSubmit1').disabled = false;
+			    	document.getElementById('btnSubmit1').textContent  = "Confirmar";
+				break;
+				case "2":
+					document.getElementById('btnSubmit2').disabled = false;
+			    	document.getElementById('btnSubmit2').textContent  = "Confirmar";	
+				break;
+				case "3":
+					document.getElementById('btnSubmit3').disabled = false;
+			    	document.getElementById('btnSubmit3').textContent  = "Confirmar";
+				break;
+				case "4":
+					document.getElementById('btnSubmit4').disabled = false;
+			    	document.getElementById('btnSubmit4').textContent  = "Confirmar";
+				break;
+				case "5":
+					document.getElementById('btnSubmit5').disabled = false;
+			    	document.getElementById('btnSubmit5').textContent  = "Confirmar";
+				break;
+				case "6":
+					document.getElementById('btnSubmit6').disabled = false;
+			    	document.getElementById('btnSubmit6').textContent  = "Confirmar";
+				break;
+			};
 			  } 
 			  else{
-				alert("Por favor, tenta novamente, podes ter de tentar várias vezes ou até mais tarde. Culpa da biblioteca e não do programador :p");
+				contador +=1;
+				console.log("Tentativa " + contador);
+				if(contador == 6){
+					alert("Neste momento não consigo processar o pedido, por favor tenta mais tarde");
+				} 
+				else send(body);
 			  }
-			  document.getElementById('btnSubmit').disabled = false;
-			  document.getElementById('btnSubmit').textContent  = "Confirmar";
-
 			});
 		}
 	  </script>
